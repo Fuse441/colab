@@ -1,4 +1,39 @@
-
-<div class="card flex justify-content-center">
-    <p-button label="Check" icon="pi pi-check"></p-button>
+<div class="hero">
+    <div class="container">
+        <div class="content">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h1>CO-Working Space</h1>
+                    <p class="mb-4">สำหรับชาวฟรีแลนซ์หรือใครที่กำลังมองที่นั่งทำงานชิลๆ แอร์เย็น มีปลั๊กไว้เสียบ ไม่ว่าจะแบบมาแป๊บเดียวหรือนั่งแช่เป็นวันๆ ลองเอาลิสต์นี้ไปใช้ดู นี่คือ Co-working 10 แห่งรอบกรุง ที่คุณสามารถหอบงานไปทำได้ โดยไม่ต้องเสียเงินเพิ่มแต่อย่างใด</p>
+                    <p-button label="รายละเอียด"></p-button>
+                </div>
+            </div>
+            <div class="image-show">
+                <p-galleria [value]="images" [numVisible]="5" [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [containerStyle]="{ 'max-width': '640px' }">
+                    <ng-template pTemplate="item" let-item>
+                        <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
+                    </ng-template>
+                </p-galleria>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="p-10">
+    <!--Card 1-->
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img class="w-full" src="https://cms.dmpcdn.com/food/2022/01/24/5657b7b0-7cca-11ec-8c56-b759fb36387f_webp_original.jpg">
+        <div class="px-6 py-4">
+            <div class="font-bold text-xl mb-2">TrueSpace</div>
+            <p-button icon="pi pi-search" severity="success"></p-button>
+            <!-- <p class="text-gray-700 text-base">
+                เปิดลิสต์กันที่ TrueSpace ทรูสเปซ สาขา ศาลายา ถึงแม้ว่าที่นี่จะเป็น Co-Working Space ที่เป็นชื่อทรู แต่ไม่ว่าคุณจะเป็นลูกค้าเครือข่ายไหนก็สามารถเข้ามาใช้บริการได้ True Space ศาลายา ตั้งอยู่ในพื้นที่ของมหาวิทยาลัยมหิดล ศาลายา บอกเลยว่าราคาดีและคุ้มมาก
+                เฟรนด์ลี่กับทั้งนิสิต นักศึกษา และวัยทำงาน ฟรีแลนซ์ Start-Up ตอบโจทย์คนรุ่นใหม่สุดๆ ไปเลยค่ะ
+            </p> -->
+        </div>
+        <div class="px-6 pt-4 pb-2">
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#ที่จอด</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#กาแฟ</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#ดนตรี</span>
+        </div>
+    </div>
 </div>

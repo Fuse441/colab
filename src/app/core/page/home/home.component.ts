@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomeService } from './home.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(){
-    console.log("on Home")
+  images: any[] | undefined;
+
+  constructor(private homeService: HomeService) {}
+
+  ngOnInit() {
+    this.images = this.homeService.getImages()
+    console.log(this.images)
   }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import {menu} from '@config/menu';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'colab';
+  items = [{}]
   constructor(){
-    console.log("on AppComponent")
+    this.items = menu
   }
 
-  
+
 }
