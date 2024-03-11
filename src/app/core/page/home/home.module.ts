@@ -3,17 +3,19 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { PrimeModule } from '@module/prime.module';
-
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '@module/material.module';
 
 
 @NgModule({
   declarations: [
     HomeComponent
   ],
-  imports: [
+  imports: [FormsModule,
     CommonModule,
     HomeRoutingModule,
-    PrimeModule
+    PrimeModule,
+    MaterialModule
   ]
 })
 export class HomeModule { }

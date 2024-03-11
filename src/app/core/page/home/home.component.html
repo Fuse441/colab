@@ -18,22 +18,34 @@
         </div>
     </div>
 </div>
-<div class="p-10">
-    <!--Card 1-->
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-        <img class="w-full" src="https://cms.dmpcdn.com/food/2022/01/24/5657b7b0-7cca-11ec-8c56-b759fb36387f_webp_original.jpg">
-        <div class="px-6 py-4">
-            <div class="font-bold text-xl mb-2">TrueSpace</div>
-            <p-button icon="pi pi-search" severity="success"></p-button>
-            <!-- <p class="text-gray-700 text-base">
-                เปิดลิสต์กันที่ TrueSpace ทรูสเปซ สาขา ศาลายา ถึงแม้ว่าที่นี่จะเป็น Co-Working Space ที่เป็นชื่อทรู แต่ไม่ว่าคุณจะเป็นลูกค้าเครือข่ายไหนก็สามารถเข้ามาใช้บริการได้ True Space ศาลายา ตั้งอยู่ในพื้นที่ของมหาวิทยาลัยมหิดล ศาลายา บอกเลยว่าราคาดีและคุ้มมาก
-                เฟรนด์ลี่กับทั้งนิสิต นักศึกษา และวัยทำงาน ฟรีแลนซ์ Start-Up ตอบโจทย์คนรุ่นใหม่สุดๆ ไปเลยค่ะ
-            </p> -->
-        </div>
-        <div class="px-6 pt-4 pb-2">
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#ที่จอด</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#กาแฟ</span>
-            <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#ดนตรี</span>
-        </div>
-    </div>
+<div class="section-content">
+    <p-card header="HUBBA-TO" subheader="แล็บทดลองสำหรับคนรักงานคราฟต์" [style]="{ width: '360px',margin: '0 0 15px 0'}">
+        <ng-template pTemplate="header" >
+            <img alt="Card" src="https://api.soimilk.com/sites/default/files/u142959/hubbato_web6.jpg" />
+        </ng-template>
+        <div>
+            <mat-chip-set aria-label="chip-selection">
+                <mat-chip>
+                  <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+                  จอดรถฟรี
+                </mat-chip>
+                <mat-chip>
+                    <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+                    จอดรถฟรี
+                  </mat-chip>
+                  <mat-chip>
+                    <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+                    จอดรถฟรี
+                  </mat-chip>
+                  <mat-chip>
+                    <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu"/>
+                    จอดรถฟรี
+                  </mat-chip>
+              </mat-chip-set>
+            </div>
+        <ng-template pTemplate="footer">
+            <p-button label="" icon="pi pi-search-plus"></p-button>
+            
+        </ng-template>
+    </p-card>
 </div>

@@ -11,6 +11,9 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
+.section-content{
+    margin: 50px;
+}
 .hero {
     .container {
         max-width: 100%;
@@ -52,7 +55,13 @@ $xxl: 1400px;
     justify-content: space-between;
     display: flex;
 }
-
+// .p-card .p-component{
+//     margin-bottom: 15px;
+// }
+.p-card-content{
+    margin: 0 !important;
+    padding: 0 !important;
+}
 .image-show {
     margin-right: 50px;
 }

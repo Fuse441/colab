@@ -8,6 +8,7 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent {
   images: any[] | undefined;
+  option: string[] | undefined;
 
   constructor(private homeService: HomeService) {}
 
