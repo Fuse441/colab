@@ -1,10 +1,20 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { ApiService } from "@shared/service/api/api.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService  {
+export class HomeService extends ApiService {
+  constructor(http:HttpClient) {
+    super(http)
+   }
+
+   test(){
+     return this.get("Space");
+   }
   getImages(){
+
     let images: any[] = [];
 
     images= [

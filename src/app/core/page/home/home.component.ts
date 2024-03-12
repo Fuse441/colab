@@ -15,5 +15,9 @@ export class HomeComponent {
   ngOnInit() {
     this.images = this.homeService.getImages()
     console.log(this.images)
+
+    this.homeService.test().subscribe((reponse => {
+      console.log(reponse)
+    }));
   }
 }
