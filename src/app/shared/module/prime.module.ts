@@ -6,6 +6,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
 import { GalleriaModule } from 'primeng/galleria';
 import { FormsModule } from '@angular/forms';
+import { PasswordModule } from 'primeng/password';
 import { PanelModule } from 'primeng/panel';
 const modules = [
   PanelModule,
@@ -15,7 +16,8 @@ const modules = [
   ChipsModule,
   MenubarModule,
   GalleriaModule,
-  CardModule
+  CardModule,
+  PasswordModule
 ];
 
 

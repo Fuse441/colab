@@ -12,7 +12,7 @@ export const menu: MenuItem[] = [
 },{
   label: 'เข้าสู่ระบบ/สมัครสมาชิก',
   icon: PrimeIcons.SIGN_IN,
-  url: 'sign_in'
+  url: 'login'
 },{
   label: 'ข้อเสนอแนะ',
   icon: PrimeIcons.COMMENTS,

@@ -11,7 +11,7 @@ import { PrimeModule } from '@module/prime.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     HttpClientModule,

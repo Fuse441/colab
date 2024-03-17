@@ -1,0 +1,22 @@
+<div class="container_login">
+    <div class="content">
+        <div class="left-content">
+            <h4>เข้าสู่ระบบ</h4>
+            <form [formGroup]="formGroup">
+
+                <span class="p-float-label">
+          <input pInputText id="username" formControlName="username" class="form-input" autocomplete="off" />
+          <label for="username">ชื่อผู้ใช้งาน</label>
+        </span>
+                <span class="p-float-label">
+          <p-password [(ngModel)]="password" [toggleMask]="true" [feedback]="false" class="form-input"></p-password>
+          <label for="username">รหัสผ่าน</label>
+        </span>
+            </form>
+            <p-button label="เข้าสู่ระบบ"></p-button>
+        </div>
+        <div class="right-content">
+            right
+        </div>
+    </div>
+</div>

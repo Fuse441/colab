@@ -1,0 +1,30 @@
+.container_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    border-color: black;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.content {
+    display: flex;
+    /* เพิ่ม */
+    flex-direction: row;
+    /* เพิ่ม */
+}
+
+.left-content,
+.right-content {
+    flex: 1;
+    padding: 10px;
+    height: auto;
+    width: 500px;
+    border: 1px solid black;
+}
+
+.form-input,
+.form-input .p-password {
+    width: 100%;
+}
