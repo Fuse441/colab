@@ -6,8 +6,9 @@ import { MenubarModule } from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
 import { GalleriaModule } from 'primeng/galleria';
 import { FormsModule } from '@angular/forms';
-
+import { PanelModule } from 'primeng/panel';
 const modules = [
+  PanelModule,
   ButtonModule,
   FormsModule,
   InputTextModule,

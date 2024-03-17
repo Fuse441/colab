@@ -1,7 +1,7 @@
 <div class="navbar">
-    <p-menubar [model]="items">
+    <p-menubar [model]="items" >
         <ng-template pTemplate="start">
-            <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" height="40" class="mr-2" />
+            <img src="../assets/img/logo_colab.png" height="40" class="mr-2" />
         </ng-template>
         <ng-template pTemplate="end">
             <input type="text" pInputText placeholder="ค้นหา" class="w-full" />
@@ -13,3 +13,34 @@
 <ng-container>
     <router-outlet></router-outlet>
 </ng-container>
+<div class="footer">
+    <div class="row">
+        <div class="column" >
+          <h2>ติดต่อ</h2>
+          
+          <div class="contact"> 
+           <div class="body location">
+            <i class="pi pi-envelope"  style="font-size: 1.7rem"></i> 
+            <a href = "mailto: colab@gmail.com"><b>colab@gmail.com</b></a>
+           </div>
+           <div class="body phone">
+            <i class="pi pi-phone"  style="font-size: 1.7rem"></i> 
+           <div class="text-at-icon">
+            <b>0645098990</b>
+           </div>
+           </div>
+        </div>   
+         
+        </div>
+        <div class="column">
+          <h2>เกี่ยวกับธุรกิจ</h2>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid quaerat similique sed expedita. Unde ab quas eaque quidem veniam sapiente eum debitis rem eius, quibusdam atque laudantium molestias quam quo?</p>
+            <div class="body social">
+                <i class="pi pi-facebook" style="font-size: 1.7rem"></i>
+                <i class="pi pi-instagram" style="font-size: 1.7rem"></i>
+                <i class="pi pi-linkedin" style="font-size: 1.7rem"></i>
+                <i class="pi pi-github" style="font-size: 1.7rem"></i>
+            </div>
+        </div>
+      </div>  
+</div>
