@@ -18,6 +18,56 @@
         </div>
     </div>
 </div>
+<div class="filter">
+    <div class="search">
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input type="text" pInputText [(ngModel)]="search"  placeholder="ชื่อ"/>
+        </span>
+    </div>
+
+    <div class="location">
+        <span class="p-float-label" >
+            <p-dropdown [style]="{width:'100%'}" [options]="optionCity" [(ngModel)]="selectedCity"   placeholder="จังหวัด" optionLabel="name" inputId="float-label"></p-dropdown>
+            <label for="float-label" >เลือกจังหวัด</label>
+        </span>
+    </div>
+
+    <div class="addOn">
+        <button (click)="op.toggle($event)" pButton pRipple  icon="pi pi-plus" label="เพิ่มเติม" class="p-button-Primary" [style.width]=" '300px' "></button>
+     
+    </div>
+    <p-overlayPanel #op >
+     <div class="content-overlay">
+        <div class="moreFilter" *ngFor="let data of moreFilters">
+     
+        <div class="title">
+            {{data.title}}
+        </div>
+        <ng-container *ngIf="data.type === 'checkbox'">
+            <div class="item" *ngFor="let body of data.item ">        
+                <p-checkbox [label]="body.label" [name]="body.name" [value]="body.value" [(ngModel)]="selectedFilter"></p-checkbox>
+            </div>          
+        </ng-container>
+        <ng-container *ngIf="data.type === 'price'">
+               
+            
+                <label class="block font-bold mb-2" >{{data.startRange}}</label>
+                <p-inputNumber class="custom-input"  [(ngModel)]="startPrice" mode="currency" inputId="currency-thailand" currency="THB" locale="th-TH"> </p-inputNumber>
+
+                <label class="block font-bold mb-2" >{{data.lastRange}}</label>
+                <p-inputNumber class="custom-input"  [(ngModel)]="lastPrice" mode="currency" inputId="currency-thailand" currency="THB" locale="th-TH"> </p-inputNumber>
+                      
+        </ng-container>
+        </div>
+        
+      </div>
+    </p-overlayPanel>
+    <div class="send">
+        <button pButton pRipple (click)="Search()"  icon="pi pi-search"  label="ค้นหา" class="p-button-success btn-send"></button>
+        <button pButton pRipple  icon="pi pi-refresh"  label="ล้าง" class="p-button-danger btn-refresh"></button>
+    </div>
+</div> 
 <div class="section-content">
     <p-card header="HUBBA-TO" subheader="แล็บทดลองสำหรับคนรักงานคราฟต์" [style]="{ width: '360px',margin: '0 0 15px 0'}">
         <ng-template pTemplate="header">
@@ -45,6 +95,8 @@
         </ng-template>
     </p-card>
 </div>
+
+
 <ng-template pTemplate="footer">
     <p>asd</p>
 </ng-template>

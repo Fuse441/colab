@@ -70,3 +70,46 @@ $xxl: 1400px;
     border-radius: 15px;
     transition: all 1s ease-out;
 }
+.filter {
+    display: flex;
+    margin: 0 50px 0 50px;
+
+    flex-wrap: wrap   
+}
+
+.filter .search span ,.filter .search input{
+    width: 900px;
+}
+.send{
+    
+    width: 300px;
+}
+.location{
+    margin-right: 25px;
+    width: 250px;
+}
+.moreFilter{
+    width: 150px;
+    height: 100%;
+      
+}
+::ng-deep .custom-input input#currency-thailand {
+    width: 100%; /* ปรับค่าตามที่ต้องการ */
+}
+.content-overlay{
+    display: flex
+}
+.search{
+    margin-bottom: 15px;
+    margin-right: 25px;
+}
+.btn-refresh{
+    margin-left: 5px;
+}
+.addOn{
+    margin-right: 25px;
+ 
+}
+.addOn .p-button{
+    
+}

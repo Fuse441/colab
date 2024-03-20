@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { PrimeModule } from '@module/prime.module';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '@module/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { MaterialModule } from '@module/material.module';
   imports: [FormsModule,
     CommonModule,
     HomeRoutingModule,
+    ReactiveFormsModule,
     PrimeModule,
     MaterialModule
   ]

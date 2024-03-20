@@ -1,4 +1,9 @@
+body{
+    background-color: #000000;
+   
+}
 .container_login {
+    background-image: url(https://www.primefaces.org/cdn/primevue/images/layout/pattern.png), radial-gradient(50% 50% at center top, #c7eeea 0%, #ffffff 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,17 +19,48 @@
     flex-direction: row;
     /* เพิ่ม */
 }
-
+.left-content{
+    padding: 50px;
+}
 .left-content,
 .right-content {
     flex: 1;
-    padding: 10px;
+    
     height: auto;
     width: 500px;
-    border: 1px solid black;
+    box-shadow: -1px -1px 8px 5px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+     /* เพิ่มขอบโค้ง */
+   
+    
 }
 
+.right-content img{
+    width: 100%;
+    height: 100%;
+}
+
+    .right-content{
+        width: 700px;
+    }
 .form-input,
 .form-input .p-password {
+    width: 100%;
+}
+.input-users{
+    margin-bottom: 25px;
+}
+::ng-deep .custom-input input.p-inputtext  {
+    width: 100%; /* ปรับค่าตามที่ต้องการ */
+
+}
+::ng-deep .custom-input {
+    width: 100%;
+    
+}
+.container-input-password,.container-input-username{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+::ng-deep .btn-custom {
     width: 100%;
 }

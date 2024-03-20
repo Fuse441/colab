@@ -8,7 +8,14 @@ import { GalleriaModule } from 'primeng/galleria';
 import { FormsModule } from '@angular/forms';
 import { PasswordModule } from 'primeng/password';
 import { PanelModule } from 'primeng/panel';
+import { DropdownModule } from 'primeng/dropdown';
+import { CheckboxModule } from 'primeng/checkbox';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 const modules = [
+  InputNumberModule,
+  OverlayPanelModule,
+  CheckboxModule,
   PanelModule,
   ButtonModule,
   FormsModule,
@@ -17,7 +24,9 @@ const modules = [
   MenubarModule,
   GalleriaModule,
   CardModule,
-  PasswordModule
+  PasswordModule,
+  DropdownModule,
+  
 ];
 
 
