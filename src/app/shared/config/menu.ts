@@ -8,7 +8,7 @@ export const menu: MenuItem[] = [
 },{
   label: 'ติดต่อ',
   icon: PrimeIcons.INBOX,
-  url: 'content'
+  url: 'contact'
 },{
   label: 'เข้าสู่ระบบ/สมัครสมาชิก',
   icon: PrimeIcons.SIGN_IN,

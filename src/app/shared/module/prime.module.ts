@@ -12,7 +12,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PaginatorModule } from 'primeng/paginator';
 const modules = [
+  PaginatorModule,
+  InputTextareaModule,
   InputNumberModule,
   OverlayPanelModule,
   CheckboxModule,
@@ -26,7 +30,7 @@ const modules = [
   CardModule,
   PasswordModule,
   DropdownModule,
-  
+
 ];
 
 

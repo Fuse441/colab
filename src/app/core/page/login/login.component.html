@@ -4,22 +4,27 @@
             <h4>เข้าสู่ระบบ</h4>
             <form [formGroup]="formGroup">
                 <div class="container-input-username">
-                <span class="p-float-label">
+                    <span class="p-float-label">
           <input class="input-users" pInputText id="username" formControlName="username" class="form-input" autocomplete="off" />
           <label for="username">ชื่อผู้ใช้งาน</label>
         </span>
                 </div>
                 <div class="container-input-password">
-                <span class="p-float-label">
-          <p-password styleClass="custom-input" [(ngModel)]="password" [toggleMask]="true" [feedback]="false" class="form-input"></p-password>
+                    <span class="p-float-label">
+          <p-password styleClass="custom-input"  formControlName="password" [(ngModel)]="password" [toggleMask]="true" [feedback]="false" class="form-input"></p-password>
           <label for="username">รหัสผ่าน</label>
         </span>
                 </div>
             </form>
-            <p-button styleClass="btn-custom" label="เข้าสู่ระบบ"></p-button>
+            <div class="flex align-items-center gap-1 my-3 flex-row-reverse">
+                <label for="ny">จดจำฉัน</label>
+                <p-checkbox value="remember"></p-checkbox>
+
+            </div>
+            <p-button styleClass="btn-custom" (onClick)="login()" label="เข้าสู่ระบบ"></p-button>
         </div>
         <div class="right-content">
-           <img src="https://ctfassets.imgix.net/vh7r69kgcki3/5HEACFDhiLEOjmncs5ELEq/d447880ffb7e80f91ea8310f3cbf438c/Web_150DPI-WeWork_Alexanderplatz_Opening_Berlin__6.jpg">
+            <img src="https://ctfassets.imgix.net/vh7r69kgcki3/5HEACFDhiLEOjmncs5ELEq/d447880ffb7e80f91ea8310f3cbf438c/Web_150DPI-WeWork_Alexanderplatz_Opening_Berlin__6.jpg">
         </div>
     </div>
 </div>
