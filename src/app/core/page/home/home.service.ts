@@ -10,8 +10,8 @@ export class HomeService extends ApiService {
     super(http)
    }
 
-   test(){
-     return this.get("Space");
+   GetSpace(){
+    return  this.get("space")      
    }
   getImages(){
 

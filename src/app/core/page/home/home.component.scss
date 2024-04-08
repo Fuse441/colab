@@ -110,6 +110,9 @@ $xxl: 1400px;
     margin-right: 25px;
  
 }
+::ng-deep .custom-btn button{
+    width: 100%;
+}  
 .addOn .p-button{
     
 }

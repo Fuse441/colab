@@ -65,13 +65,17 @@
     </p-overlayPanel>
     <div class="send">
         <button pButton pRipple (click)="Search()" icon="pi pi-search" label="ค้นหา" class="p-button-success btn-send"></button>
-        <button pButton pRipple icon="pi pi-refresh" label="ล้าง" class="p-button-danger btn-refresh"></button>
+        <button pButton pRipple icon="pi pi-refresh" (click)="clearCheckboxes()" label="ล้าง" class="p-button-danger btn-refresh"></button>
     </div>
 </div>
 <div class="section-content">
-    <p-card header="HUBBA-TO" subheader="แล็บทดลองสำหรับคนรักงานคราฟต์" [style]="{ width: '360px',margin: '0 0 15px 0'}">
+    <div class="space flex">
+    <ng-container *ngFor="let item of space">
+       
+    
+    <p-card header={{item.spaceName.toString()}} subheader="{{item.spaceDescription}}" [style]="{ width: '360px',margin: '0 20px 15px 0'}">
         <ng-template pTemplate="header">
-            <img alt="Card" src="https://api.soimilk.com/sites/default/files/u142959/hubbato_web6.jpg" />
+            <img alt="Card" src="{{item.image.toString()}}" [style]="{width: '100%', height:'250px' }" />
         </ng-template>
         <div>
             <mat-chip-set aria-label="chip-selection">
@@ -89,14 +93,16 @@
                 </mat-chip>
             </mat-chip-set>
         </div>
+        
         <ng-template pTemplate="footer">
-            <p-button label="" icon="pi pi-search-plus"></p-button>
+            <p-button label="รายละเอียด" class="custom-btn" (onClick)="testPrint()" icon="pi pi-search-plus"></p-button>
 
         </ng-template>
     </p-card>
-
+</ng-container>
+</div>
     <div class="card flex flex-row-reverse">
-        <p-paginator [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+        <p-paginator [totalRecords]="totalRecords" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
     </div>
 </div>
 
