@@ -5,6 +5,7 @@ import {City, locations} from '@config/filter/location'
 import { Filter, moreFilter } from '@config/filter/moreFilter';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { Checkbox } from 'primeng/checkbox';
+import { localStorageKey } from '@config/localStorageKey';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,7 +17,7 @@ export class HomeComponent {
   images: any[] | undefined;
   option: string[] | undefined;
   search:string | undefined;
-  optionCity: City[] | undefined; 
+  optionCity: City[] | undefined;
   selectedCity: City | undefined;
   moreFilters:Filter[] | undefined;
   selectedFilter: any[] | undefined;
@@ -25,7 +26,8 @@ export class HomeComponent {
   space?: any[]
   totalRecords: number = 0
   resSpaceDetails?:any
-  spaceDetail:any[] = [] 
+  visible: boolean = false;
+  spaceDetail:any[] = []
 
   constructor(private homeService: HomeService) {}
 
@@ -36,23 +38,30 @@ export class HomeComponent {
     this.homeService.GetSpace().subscribe((reponse => {
       this.space = reponse.responseDatas
       this.totalRecords = reponse.total
-      this.resSpaceDetails = reponse.responseDatas
-      this.GetSpaceDetails()
-     
+this.checkToken()
+      console.log(this.space)
     }));
   }
-  GetSpaceDetails(){
-    
-    this.resSpaceDetails.forEach((item:any) => {
-      let temp = JSON.parse(item.spaceDetails)
-      this.spaceDetail.push(temp)
-      
-    });
-    console.log(this.spaceDetail)
-  }
 
-  testPrint(){
-    console.log(this.spaceDetail)
+
+  selectedItem:any
+  selectedItemDetail:any
+  showDialog(id:number) {
+    this.selectedItem = this.space?.find(item => item.spaceId === id);
+    this.selectedItemDetail = JSON.parse(this.selectedItem.spaceDetails)
+    console.log(this.selectedItemDetail)
+    this.visible = true;
+
+  }
+  token:boolean = false
+  checkToken(){
+    let temp = localStorage.getItem(localStorageKey.token)
+    if(temp === null){
+      this.token = false
+    } else{
+      this.token = true
+    }
+    return localStorage.getItem(localStorageKey.token)
   }
 
   clearCheckboxes() {
@@ -60,6 +69,6 @@ export class HomeComponent {
   }
   Search(){
     console.log(this.selectedFilter,this.startPrice,this.lastPrice)
-   
+
   }
 }

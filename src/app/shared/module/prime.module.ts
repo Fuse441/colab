@@ -14,7 +14,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PaginatorModule } from 'primeng/paginator';
+import { DialogModule } from 'primeng/dialog';
 const modules = [
+  DialogModule,
   PaginatorModule,
   InputTextareaModule,
   InputNumberModule,

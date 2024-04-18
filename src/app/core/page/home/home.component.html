@@ -70,37 +70,63 @@
 </div>
 <div class="section-content">
     <div class="space flex">
-    <ng-container *ngFor="let item of space">
-       
-    
-    <p-card header={{item.spaceName.toString()}} subheader="{{item.spaceDescription}}" [style]="{ width: '360px',margin: '0 20px 15px 0'}">
-        <ng-template pTemplate="header">
-            <img alt="Card" src="{{item.image.toString()}}" [style]="{width: '100%', height:'250px' }" />
-        </ng-template>
-        <div>
-            <mat-chip-set aria-label="chip-selection">
-                <mat-chip>
-                    <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
-                </mat-chip>
-                <mat-chip>
-                    <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
-                </mat-chip>
-                <mat-chip>
-                    <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
-                </mat-chip>
-                <mat-chip>
-                    <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
-                </mat-chip>
-            </mat-chip-set>
-        </div>
-        
-        <ng-template pTemplate="footer">
-            <p-button label="รายละเอียด" class="custom-btn" (onClick)="testPrint()" icon="pi pi-search-plus"></p-button>
+        <ng-container *ngFor="let item of space">
 
-        </ng-template>
-    </p-card>
-</ng-container>
-</div>
+
+            <p-card header={{item.spaceName.toString()}} subheader="{{item.spaceDescription}}" [style]="{ width: '360px',margin: '0 20px 15px 0'}">
+                <ng-template pTemplate="header">
+                    <img alt="Card" src="{{item.image.toString()}}" [style]="{width: '100%', height:'250px' }" />
+                </ng-template>
+                <div>
+                    <mat-chip-set aria-label="chip-selection">
+                        <mat-chip>
+                            <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
+                        </mat-chip>
+                        <mat-chip>
+                            <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
+                        </mat-chip>
+                        <mat-chip>
+                            <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
+                        </mat-chip>
+                        <mat-chip>
+                            <img matChipAvatar src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" /> จอดรถฟรี
+                        </mat-chip>
+                    </mat-chip-set>
+                </div>
+
+                <ng-template pTemplate="footer">
+                    <p-button label="รายละเอียด" class="custom-btn" (onClick)="showDialog(item.spaceId)" icon="pi pi-search-plus"></p-button>
+                    <p-dialog header="{{selectedItem?.spaceName}}" [(visible)]="visible" [modal]="true" [style]="{ width: '60vw' }" [draggable]="false" [resizable]="false">
+                        <div class="flex">
+                            <img src={{selectedItem?.image}} [style]="{ width: '500px'}">
+                            <div class="details mx-5">
+                                <h4>{{selectedItem?.spaceDescription}}</h4>
+                                <p>ประเภท : {{selectedItem?.spaceType }}</p>
+                                <p>สถานที่ตั้ง : {{selectedItemDetail?.location}}</p>
+                                <div class="item">
+                                    <p>สิ่งอำนวยคำวามสะดวก
+
+                                    </p>
+                                    <div class="flex">
+
+                                        <p class="mx-2" *ngFor="let object of selectedItemDetail?.amenities">
+                                            {{object}}</p>
+                                    </div>
+                                </div>
+                                <p>จำนวนพื้นที่ : {{selectedItemDetail?.capacity}}</p>
+                                <p>ราคา : {{selectedItemDetail?.price}}</p>
+                            </div>
+                        </div>
+
+
+                        <ng-template pTemplate="footer" *ngIf="token">
+                            <p-button label="จอง" icon="pi pi-calendar" class="my-5"></p-button>
+                        </ng-template>
+                    </p-dialog>
+                </ng-template>
+            </p-card>
+        </ng-container>
+    </div>
     <div class="card flex flex-row-reverse">
         <p-paginator [totalRecords]="totalRecords" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
     </div>
