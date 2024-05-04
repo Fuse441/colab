@@ -12,3 +12,33 @@
 .content {
     margin: 50px;
 }
+
+
+/* profile.component.css */
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+}
+
+.left,
+.right {
+    flex: 1;
+    /* ทำให้ทั้งสองส่วนมีขนาดเท่ากัน */
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    /* เพิ่มขอบเพื่อความชัดเจน */
+}
+
+.left {
+    background-color: #fff;
+}
+
+.right {
+    background-color: #eef;
+}

@@ -11,15 +11,17 @@ $md: 768px;
 $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
-.section-content{
+.section-content {
     margin: 50px;
 }
+
 .hero {
     .container {
         max-width: 100%;
     }
     background: $primary;
-    background-image: url(https://www.primefaces.org/cdn/primevue/images/layout/pattern.png), radial-gradient(50% 50% at center top, var(--primary-100) 0%, #ffffff 100%);
+    background-image: url(https://www.primefaces.org/cdn/primevue/images/layout/pattern.png),
+    radial-gradient(50% 50% at center top, var(--primary-100) 0%, #ffffff 100%);
     padding: calc(4rem - 30px) 0 0rem 0;
     @media (min-width: $md) {
         padding: calc(4rem - 30px) 0 4rem 0;
@@ -56,63 +58,78 @@ $xxl: 1400px;
     justify-content: space-between;
     display: flex;
 }
+
 // .p-card .p-component{
 //     margin-bottom: 15px;
 // }
-.p-card-content{
+.p-card-content {
     margin: 0 !important;
     padding: 0 !important;
 }
+
 .image-show {
     margin-right: 50px;
 }
-.img-slider{
+
+.img-slider {
     border-radius: 15px;
     transition: all 1s ease-out;
 }
+
 .filter {
     display: flex;
     margin: 0 50px 0 50px;
-
-    flex-wrap: wrap   
+    flex-wrap: wrap
 }
 
-.filter .search span ,.filter .search input{
+.filter .search span,
+.filter .search input {
     width: 900px;
 }
-.send{
-    
+
+.send {
     width: 300px;
 }
-.location{
+
+.location {
     margin-right: 25px;
     width: 250px;
 }
-.moreFilter{
+
+.moreFilter {
     width: 150px;
     height: 100%;
-      
 }
+
 ::ng-deep .custom-input input#currency-thailand {
-    width: 100%; /* ปรับค่าตามที่ต้องการ */
+    width: 100%;
+    /* ปรับค่าตามที่ต้องการ */
 }
-.content-overlay{
+
+::ng-deep .close-btn input {
+    background-color: #000000;
+    /* ปรับค่าตามที่ต้องการ */
+}
+
+.content-overlay {
     display: flex
 }
-.search{
+
+.search {
     margin-bottom: 15px;
     margin-right: 25px;
 }
-.btn-refresh{
+
+.btn-refresh {
     margin-left: 5px;
 }
-.addOn{
+
+.addOn {
     margin-right: 25px;
- 
 }
-::ng-deep .custom-btn button{
+
+::ng-deep .custom-btn button {
     width: 100%;
-}  
-.addOn .p-button{
-    
 }
+
+.addOn .p-button {}

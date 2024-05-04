@@ -11,8 +11,17 @@ export class HomeService extends ApiService {
    }
 
    GetSpace(){
-    return  this.get("space")      
+    return  this.get("space")
    }
+   GetBookingId(id:number){
+    return this.get(`Booking/${id}`)
+   }
+   login = (id:number,payload:{userId:number, spaceId: number,
+   startTime: string,
+   endTime: string,
+   bookingStatus: number,
+   bookingDate: string,
+   note: string}) => this.post(`Booking/${id}`,payload)
   getImages(){
 
     let images: any[] = [];

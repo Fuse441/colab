@@ -15,7 +15,10 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
+import { CalendarModule } from 'primeng/calendar';
+
 const modules = [
+  CalendarModule,
   DialogModule,
   PaginatorModule,
   InputTextareaModule,

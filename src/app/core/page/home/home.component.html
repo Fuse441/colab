@@ -114,13 +114,23 @@
                                     </div>
                                 </div>
                                 <p>จำนวนพื้นที่ : {{selectedItemDetail?.capacity}}</p>
-                                <p>ราคา : {{selectedItemDetail?.price}}</p>
+                                <p>ราคา : {{selectedItemDetail?.price}} ต่อชั่วโมง</p>
                             </div>
                         </div>
 
 
                         <ng-template pTemplate="footer" *ngIf="token">
-                            <p-button label="จอง" icon="pi pi-calendar" class="my-5"></p-button>
+                            <h4>เลือกวันและเวลาการเข้าใช้งาน</h4>
+                            <form [formGroup]="formSelectBooking" class="my-3">
+
+                                <p-calendar formControlName="startTime" class="mx-3" placeholder="เวลาเริ่มต้น" [disabledDates]="disabledDates" [showTime]="true" [minDate]="minDate" [showButtonBar]="true"></p-calendar>
+
+
+                                <p-calendar formControlName="endTime" class="" placeholder="เวลาสิ้นสุด" [showTime]="true" [minDate]="formSelectBooking.get('startTime')?.value" [maxDate]="maxDateOnSelect()" [showButtonBar]="true"></p-calendar>
+                            </form>
+
+                            <p-button label="ปิด" icon="pi pi-times" (onClick)="closeDialog()"></p-button>
+                            <p-button label="ทำรายการ" icon="pi pi-calendar" class="my-5" (onClick)="checkDate()"></p-button>
                         </ng-template>
                     </p-dialog>
                 </ng-template>
