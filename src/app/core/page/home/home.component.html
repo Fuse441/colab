@@ -149,8 +149,8 @@
                                 </div>
 
                                 <p-dialog header="ทำรายการ" [(visible)]="stepper" [modal]="true" [style]="{ width: '60vw' }" [draggable]="false" [resizable]="false">
-                                    <app-stepper [spaceName]="selectedItem?.spaceName" [spaceDescription]="selectedItem?.spaceDescription" [spaceType]="selectedItem?.spaceType" [location]="selectedItemDetail?.location" [selectedItemDetail]="selectedItemDetail" [bookingDate]="startDate"
-                                        [codeToTime]="formattedCodeToTime" [payload]="payload"></app-stepper>
+                                    <app-stepper (closeDialog)="handleDialogClose($event)" [spaceName]="selectedItem?.spaceName" [spaceDescription]="selectedItem?.spaceDescription" [spaceType]="selectedItem?.spaceType" [location]="selectedItemDetail?.location" [selectedItemDetail]="selectedItemDetail"
+                                        [bookingDate]="startDate" [codeToTime]="formattedCodeToTime" [payload]="payload"></app-stepper>
                                 </p-dialog>
 
                             </div>

@@ -54,6 +54,7 @@ export class HomeComponent {
 ];
   constructor(private homeService: HomeService) {}
 
+
   ngOnInit() {
     this.images = this.homeService.getImages()
     this.optionCity = locations
@@ -68,8 +69,19 @@ this.checkToken()
 
 
   }
+  onDialogChange(event:any){
+    console.log(event)
+  }
+  handleDialogClose(success: boolean) {
+    console.log(success)
+    if (success) {
 
 
+    } else {
+      this.visible = false;
+      this.stepper = false
+    }
+  }
   capacity:number = 0
   onDateChange(event: any) {
     this.formSelectBooking.get('startTime')?.setValue(null)
@@ -145,6 +157,7 @@ this.checkToken()
 closeDialog(){
   this.visible = false
 }
+
 
   showDialog(id:number) {
 

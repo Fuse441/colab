@@ -1,16 +1,17 @@
 import { HomeService } from './../../../core/page/home/home.service';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { localStorageKey } from '@config/localStorageKey';
 import { TimeCode } from '@config/time/time';
 import * as moment from 'moment';
 import { MessageService } from 'primeng/api';
+import { catchError, of, pipe, take } from 'rxjs';
 
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
   styleUrl: './stepper.component.scss'
 })
-export class StepperComponent {
+export class StepperComponent{
   @Input() spaceName?:string
   @Input() spaceDescription?:string
   @Input() spaceType?:string
@@ -22,19 +23,19 @@ export class StepperComponent {
   @Input() payload:any
   btnLoading = false;
   visible:boolean = false;
-
+  bookingStatus:boolean = false
+  @Output() closeDialog: EventEmitter<any> = new EventEmitter();
   constructor(private messageService: MessageService,private homeService:HomeService){
 
 
   }
   ngOnInit() {
 
-
   }
 
 
-  showMessage() {
-    this.messageService.add({ severity: 'success', summary: 'จองรายสำหรับ', detail: 'เช็คที่อีเมลและกล่องข้อความเพื่อตรวจสอบรายละเอียด',life:4000});
+  showMessage(format:string,msg:string,details:string) {
+    this.messageService.add({ severity: format, summary: msg, detail: details,life:4000});
 }
 load() {
   this.btnLoading = true;
@@ -42,9 +43,9 @@ load() {
     setTimeout(() => {
       this.btnLoading = false;
       this.visible = false;
-      this.showMessage();
+
       resolve(true);
-    }, 2000);
+    }, 500);
   });
 }
 
@@ -53,18 +54,23 @@ toggleDialog() {
 }
 
 sendMail() {
-  this.homeService.booking(0, this.payload).subscribe({
-    next: (response) => {
-      if (response.responseCode === 200) {
-        this.load().then(() => {
+  this.btnLoading = true;
+    this.homeService.booking(0, this.payload).subscribe(response => {
+      if(response.responseCode === 200){
+        this.showMessage("success","จองรายสำหรับ","เช็คที่อีเมลและกล่องข้อความเพื่อตรวจสอบรายละเอียด");
+        this.visible = false;
+        this.closeDialog.emit(false);
+        this.btnLoading = false;
 
-        });
       }
-    },
-    error: (err) => {
-      console.error("Failed to send booking due to an error:", err);
-    }
-  });
+      else{
+        this.showMessage("error","จองรายการไม่สำเร็จ","กรุณาตรวจว่าคุณได้จอง Co-Working Space ไปแล้วหรือยัง");
+        this.visible = false;
+        this.closeDialog.emit(false);
+        this.btnLoading = false;
+      }
+    })
+
 }
   calculateTotal(price: number) {
     // แปลงสตริงเป็นวัตถุ Date

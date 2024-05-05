@@ -4,8 +4,15 @@
             <h3>Notification COLAB</h3>
         </div>
         <div class="chat-body">
-            <p> เรียน Fuse, ขอบคุณสำหรับการจองที่ HUBBA-TO ของเรา! เรายินดีที่จะแจ้งให้ท่านทราบว่าการจองของคุณได้รับการยืนยันแล้ว ด้วยรายละเอียดดังนี้: - **วันที่จอง:** 9:00 AM - **เวลา:** 9:00 AM ถึง 10:00 AM - กรุณาแสดงอีเมลนี้หรือหมายเลขการจอง 0645098990COLAB7681
-                ที่จุดลงทะเบียนที่ ชื่อสถานที่/กิจกรรม เมื่อเดินทางมาถึงในวันที่นัดหมาย. หากมีคำถามหรือต้องการเปลี่ยนแปลงการจอง กรุณาติดต่อเราที่ 0645098990 หรือ ขอให้คุณมีประสบการณ์ที่ยอดเยี่ยมกับเรา! ขอแสดงความนับถือ, CO-LAB Service </p>
+
+            <p *ngFor="let object of msg">
+                {{object.message}}
+
+            </p>
+            <div class=" text-end">
+                <p-button *ngIf="cancelBooking" styleClass="mx-5 my-3 text-end btn-canncel" (onClick)="toggleChat()" label="ยกเลิกรายการ"></p-button>
+            </div>
+
 
         </div>
         <div class="chat-input mx-5 text-end my-3">

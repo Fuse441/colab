@@ -41,7 +41,8 @@
                 </div>
             </div>
             <div class="flex flex-col text-start">
-                <p-button label="ยืนยันการจอง" icon="pi pi-arrow-right" class="my-2" iconPos="right" (onClick)="toggleDialog()"></p-button>
+                <p-button *ngIf="bookingStatus === true" label="ยกเลิกการจอง" icon="pi pi-arrow-right" class="my-2" iconPos="right" (onClick)="toggleDialog()"></p-button>
+                <p-button *ngIf="bookingStatus === false" label="ยืนยันการจอง" icon="pi pi-arrow-right" class="my-2" iconPos="right" (onClick)="toggleDialog()"></p-button>
                 <p-dialog header="ยืนยัน" [(visible)]="visible" [modal]="true" [draggable]="false" [resizable]="false">
                     <p>
                         คุณแน่ใจแล้วใช่ไหมที่ต้องการจอง สถานที่ {{spaceName}}

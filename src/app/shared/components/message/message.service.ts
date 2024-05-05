@@ -13,4 +13,7 @@ export class MessageUserService extends ApiService {
   renderChat(id:number){
     return this.get(`Chat/${id}`)
   }
+  checkStatus(id:number){
+    return this.get(`Booking/CheckStatus/${id}`)
+  }
 }
