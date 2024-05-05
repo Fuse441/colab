@@ -16,8 +16,15 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
 import { CalendarModule } from 'primeng/calendar';
-
+import { StepperModule } from 'primeng/stepper';
+import { ToastModule } from 'primeng/toast';
+import { RippleModule } from 'primeng/ripple';
+import { SelectButtonModule } from 'primeng/selectbutton';
 const modules = [
+  SelectButtonModule,
+  RippleModule,
+  ToastModule,
+  StepperModule,
   CalendarModule,
   DialogModule,
   PaginatorModule,

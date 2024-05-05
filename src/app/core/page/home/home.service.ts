@@ -16,7 +16,11 @@ export class HomeService extends ApiService {
    GetBookingId(id:number){
     return this.get(`Booking/${id}`)
    }
-   login = (id:number,payload:{userId:number, spaceId: number,
+   checkSelectDate(id:number,date:string){
+    return this.get(`Booking/selectDate/${id}/${date}`)
+   }
+
+   booking = (id:number,payload:{userId:number, spaceId: number,
    startTime: string,
    endTime: string,
    bookingStatus: number,

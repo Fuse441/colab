@@ -10,6 +10,7 @@ import { PrimeModule } from '@module/prime.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { SignOutComponent } from './core/page/sign-out/sign-out.component';
+import { MessageModule } from '@components/message/message.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SignOutComponent } from './core/page/sign-out/sign-out.component';
     BrowserAnimationsModule,
     PrimeModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MessageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,20 @@
+<div *ngIf="chat" class="chat">
+    <div class="chat-widget">
+        <div class="chat-header mx-5">
+            <h3>Notification COLAB</h3>
+        </div>
+        <div class="chat-body">
+            <p> เรียน Fuse, ขอบคุณสำหรับการจองที่ HUBBA-TO ของเรา! เรายินดีที่จะแจ้งให้ท่านทราบว่าการจองของคุณได้รับการยืนยันแล้ว ด้วยรายละเอียดดังนี้: - **วันที่จอง:** 9:00 AM - **เวลา:** 9:00 AM ถึง 10:00 AM - กรุณาแสดงอีเมลนี้หรือหมายเลขการจอง 0645098990COLAB7681
+                ที่จุดลงทะเบียนที่ ชื่อสถานที่/กิจกรรม เมื่อเดินทางมาถึงในวันที่นัดหมาย. หากมีคำถามหรือต้องการเปลี่ยนแปลงการจอง กรุณาติดต่อเราที่ 0645098990 หรือ ขอให้คุณมีประสบการณ์ที่ยอดเยี่ยมกับเรา! ขอแสดงความนับถือ, CO-LAB Service </p>
+
+        </div>
+        <div class="chat-input mx-5 text-end my-3">
+            <input type="text" pInputText placeholder="ระบบการโต้ตอบ รอการพัฒนา" disabled />
+            <p-button styleClass="btn-custom mx-3" (onClick)="toggleChat()" label="ปิด"></p-button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!chat" class="openChat" (click)="toggleChat()">
+    Mail
+</div>

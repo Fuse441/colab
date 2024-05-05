@@ -1,8 +1,13 @@
+<p-toast class="custom" />
+
 <div class="hero">
     <div class="container">
+
         <div class="content">
+
             <div class="col-lg-5">
                 <div class="intro-excerpt">
+
                     <h1>CO-Working Space</h1>
                     <p class="mb-4">สำหรับชาวฟรีแลนซ์หรือใครที่กำลังมองที่นั่งทำงานชิลๆ แอร์เย็น มีปลั๊กไว้เสียบ ไม่ว่าจะแบบมาแป๊บเดียวหรือนั่งแช่เป็นวันๆ ลองเอาลิสต์นี้ไปใช้ดู นี่คือ Co-working 10 แห่งรอบกรุง ที่คุณสามารถหอบงานไปทำได้ โดยไม่ต้องเสียเงินเพิ่มแต่อย่างใด</p>
                     <p-button label="รายละเอียด"></p-button>
@@ -113,24 +118,42 @@
                                             {{object}}</p>
                                     </div>
                                 </div>
-                                <p>จำนวนพื้นที่ : {{selectedItemDetail?.capacity}}</p>
+                                <p *ngIf="capacity === 0">จำนวนพื้นที่ : เลือกวันที่เพื่อตรวจ</p>
+                                <p *ngIf="capacity > 0">จำนวนพื้นที่ : {{capacity}}</p>
                                 <p>ราคา : {{selectedItemDetail?.price}} ต่อชั่วโมง</p>
                             </div>
                         </div>
 
 
                         <ng-template pTemplate="footer" *ngIf="token">
-                            <h4>เลือกวันและเวลาการเข้าใช้งาน</h4>
-                            <form [formGroup]="formSelectBooking" class="my-3">
-
-                                <p-calendar formControlName="startTime" class="mx-3" placeholder="เวลาเริ่มต้น" [disabledDates]="disabledDates" [showTime]="true" [minDate]="minDate" [showButtonBar]="true"></p-calendar>
+                            <div class="booking  text-start">
 
 
-                                <p-calendar formControlName="endTime" class="" placeholder="เวลาสิ้นสุด" [showTime]="true" [minDate]="formSelectBooking.get('startTime')?.value" [maxDate]="maxDateOnSelect()" [showButtonBar]="true"></p-calendar>
-                            </form>
+                                <h4>เลือกวันและเวลาการเข้าใช้งาน</h4>
 
-                            <p-button label="ปิด" icon="pi pi-times" (onClick)="closeDialog()"></p-button>
-                            <p-button label="ทำรายการ" icon="pi pi-calendar" class="my-5" (onClick)="checkDate()"></p-button>
+                                <form [formGroup]="formSelectBooking" class="my-3">
+                                    <p-calendar class="" placeholder="วัน/เดือน/ปี" formControlName="date" (ngModelChange)="onDateChange($event)"></p-calendar>
+                                    <p-selectButton [options]="stateOptions" formControlName="startTime" optionLabel="label" optionValue="value" />
+                                </form>
+
+
+
+
+
+
+
+
+                                <div class="text-end">
+                                    <p-button label="ปิด" icon="pi pi-times" (onClick)="closeDialog()"></p-button>
+                                    <p-button label="ทำรายการ" icon="pi pi-calendar" class="my-5" (onClick)="checkDate()" [disabled]="!this.formSelectBooking.get('startTime')?.value || !this.formSelectBooking.get('date')?.value"></p-button>
+                                </div>
+
+                                <p-dialog header="ทำรายการ" [(visible)]="stepper" [modal]="true" [style]="{ width: '60vw' }" [draggable]="false" [resizable]="false">
+                                    <app-stepper [spaceName]="selectedItem?.spaceName" [spaceDescription]="selectedItem?.spaceDescription" [spaceType]="selectedItem?.spaceType" [location]="selectedItemDetail?.location" [selectedItemDetail]="selectedItemDetail" [bookingDate]="startDate"
+                                        [codeToTime]="formattedCodeToTime" [payload]="payload"></app-stepper>
+                                </p-dialog>
+
+                            </div>
                         </ng-template>
                     </p-dialog>
                 </ng-template>

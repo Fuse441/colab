@@ -1,0 +1,57 @@
+<p-stepper>
+    <p-stepperPanel header="รายละเอียด">
+        <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+
+
+            <div class="flex flex-col text-start">
+                <h1>เช็ครายละเอียด</h1>
+                <div class="space">
+                    <h3>
+                        ชื่อสถานที่ : {{spaceName}}
+                    </h3>
+                    <h4>คำอธิบายละเอียด : {{spaceDescription}}</h4>
+                    <h4>ประเภทของสถานที่ : {{spaceType}} </h4>
+                    <h4>สถานที่ตั้ง : {{location}}</h4>
+                    <h4>สิ่งอำนวยความสะดวก :
+                        <div class="flex">
+                            <p class="mx-2" *ngFor="let object of selectedItemDetail?.amenities">
+                                {{object}}</p>
+                        </div>
+                    </h4>
+
+
+                    <h4>วันและเวลาที่ท่านจอง : วัน {{bookingDate}} / เวลาเริ่มต้น {{codeToTime?.startTime}} / เวลาสิ้นสุด {{codeToTime?.endTime}}
+                    </h4>
+                    <p>* เมื่อเวลาเป็นเศษระบบจะปัดเศษเวลาขึ้นเพื่อให้ได้จำนวนชั่วโมงเต็ม โดยไม่คำนึงถึงว่ามีการใช้งานมากน้อยแค่ไหนในชั่วโมงสุดท้ายนั้น (เช่น ถ้าใช้เวลา 1.5 ชั่วโมง ก็จะถูกคิดเป็น 2 ชั่วโมง).</p>
+                    <h2>สรุปราคา : {{selectedItemDetail.price}} บาท</h2>
+                </div>
+            </div>
+
+            <div class="flex pt-4 justify-content-end">
+                <p-button label="ยืนยัน" icon="pi pi-arrow-right" iconPos="right" (onClick)="nextCallback.emit()" />
+
+            </div>
+        </ng-template>
+    </p-stepperPanel>
+    <p-stepperPanel header="ยืนยัน">
+        <ng-template pTemplate="content" let-nextCallback="nextCallback" let-index="index">
+            <div class="flex flex-column h-12rem">
+                <div class="flex flex-col text-start">
+                    คุณแน่ใจแล้วใช่ไหมที่ต้องยืนยันการจอง สถานที่ {{spaceName}} หากคุณต้องการยกเลิกคุณสามารถยกเลิกรายการได้ภายใน 3 ชั่วโมงนับตั้งแต่คุณยืนยัน โดยระบบจะส่งเอกสารยืนยันการจองให้คุณทาง อีเมลและทางหน้าเว็ป CO-LAB
+                </div>
+            </div>
+            <div class="flex flex-col text-start">
+                <p-button label="ยืนยันการจอง" icon="pi pi-arrow-right" class="my-2" iconPos="right" (onClick)="toggleDialog()"></p-button>
+                <p-dialog header="ยืนยัน" [(visible)]="visible" [modal]="true" [draggable]="false" [resizable]="false">
+                    <p>
+                        คุณแน่ใจแล้วใช่ไหมที่ต้องการจอง สถานที่ {{spaceName}}
+
+                    </p>
+
+                    <p-button label="ยืนยัน" [loading]="btnLoading" icon="pi pi-wallet" iconPos="right" (onClick)="sendMail()"></p-button>
+                    <p-button label="ยกเลิก" [loading]="btnLoading" icon="pi pi-times" iconPos="right" (onClick)="toggleDialog()"></p-button>
+                </p-dialog>
+            </div>
+        </ng-template>
+    </p-stepperPanel>
+</p-stepper>

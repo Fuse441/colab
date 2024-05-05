@@ -115,6 +115,10 @@ $xxl: 1400px;
     display: flex
 }
 
+::ng-deep .custom .p-toast {
+    margin-top: 90px;
+}
+
 .search {
     margin-bottom: 15px;
     margin-right: 25px;
