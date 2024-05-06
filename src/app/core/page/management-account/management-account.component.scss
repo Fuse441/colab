@@ -1,0 +1,38 @@
+.section-content {
+    background-image: url(https://www.primefaces.org/cdn/primevue/images/layout/pattern.png), radial-gradient(50% 50% at center top, #c7eeea 0%, #ffffff 100%);
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    height: 100vh;
+    border-color: black;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.image {
+    width: 250px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+::ng-deep .dataview p-dataview div .p-dataview-content {
+    background-color: #d4e3e4b0;
+    border-radius: 15px;
+}
+
+::ng-deep .dataview p-dataview div .p-dataview-content {
+    overflow: hidden;
+    max-height: 707px;
+    overflow-y: auto;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+}

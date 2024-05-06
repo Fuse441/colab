@@ -30,6 +30,10 @@ export const navigationRoutes: Routes = [
     path: 'management',
     canActivate: [AuthenGuard],
     loadChildren: () => import(`../../core/page/partner/partner.module`).then(m => m.PartnerModule),
+  },{
+    path: 'account',
+    canActivate: [AuthenGuard],
+    loadChildren: () => import(`../../core/page/management-account/management-account.module`).then(m => m.ManagementAccountModule),
   },
   {
     path: '**',

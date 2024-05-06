@@ -24,11 +24,16 @@ body {
     padding: 50px;
 }
 
+.register {
+    cursor: pointer;
+}
+
 .left-content,
 .right-content {
     flex: 1;
     height: auto;
     width: 500px;
+    transition: 0.5 ease all;
     box-shadow: -1px -1px 8px 5px rgba(0, 0, 0, 0.1);
     /* เพิ่มเงา */
     /* เพิ่มขอบโค้ง */
@@ -68,14 +73,29 @@ body {
     /* ปรับค่าตามที่ต้องการ */
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* กำหนดให้มี 2 คอลัมน์ที่มีขนาดเท่ากัน */
+    grid-gap: 5px;
+    /* กำหนดระยะห่างระหว่างคอลัมน์ */
+    max-width: 600px;
+    /* ขนาดสูงสุดของ grid */
+    margin: 15px;
+    /* จัดให้อยู่ตรงกลาง */
+}
+
 ::ng-deep .custom-input {
     width: 100%;
 }
 
-.container-input-password,
-.container-input-username {
+.container-input {
     margin-top: 30px;
-    margin-bottom: 30px;
+}
+
+.full-width {
+    grid-column: 1 / span 2;
+    /* ขยายครอบคลุม 2 คอลัมน์ */
 }
 
 ::ng-deep .btn-custom {

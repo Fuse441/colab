@@ -23,7 +23,11 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { DataViewModule } from 'primeng/dataview';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { RatingModule } from 'primeng/rating';
+import { AutoFocusModule } from 'primeng/autofocus';
+import { TagModule } from 'primeng/tag';
 const modules = [
+  TagModule,
+  AutoFocusModule,
   RatingModule,
   ConfirmDialogModule,
   DataViewModule,

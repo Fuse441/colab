@@ -22,15 +22,16 @@ export class AppComponent {
 
     console.log(this.items[2])
   }
-  show(severity:string,summary:string,detail:string) {
+  show(severity:string,summary:string,detail:string,reload:boolean) {
     console.log("pass")
-    this.loading = true
+    this.loading = reload
       this.messageService.add({ severity: severity, summary: summary, detail: detail });
+      if(reload){
       setTimeout(() => {
         this.loading = false
         window.location.reload();
       }, 3000);
-
+    }
 }
   ngOnInit(){
     const userProfileString = localStorage.getItem(localStorageKey.profile);
@@ -52,6 +53,16 @@ export class AppComponent {
 
       })
     }
+    if(profile.userType === "ADMIN" ){
+      this.items.push({
+
+        label: 'การจัดบัญชีผู้ใช้งาน',
+        icon: PrimeIcons.FILE_EDIT,
+        url: 'account'
+
+    })
+    }
+
     if(profile.userType === "ADMIN" || profile.userType === "PARTNER"){
       this.items.push({
 

@@ -25,6 +25,7 @@ export class MessageComponent {
     const userProfileString = localStorage.getItem(localStorageKey.profile)
     const profile = JSON.parse(userProfileString!)
     this.messageServices.cancelBooking(profile.id).subscribe(response =>{
+      console.log(response)
       if(response.responseCode === 200){
         this.confirmCancel = false
         this.chat === false
@@ -48,6 +49,7 @@ export class MessageComponent {
       })
 
       this.messageServices.checkStatus(profile.id).subscribe(response =>{
+        console.log(response)
         if(response.responseDatas === null){
           this.cancelBooking = false
         }

@@ -39,7 +39,7 @@ export class HomeComponent {
   minDate!: Date ;
   maxDate!: any ;
 
-
+  objectKeys = Object.keys;
 
   formSelectBooking = new FormGroup({
     date: new FormControl<any|null>(null),
@@ -52,7 +52,10 @@ export class HomeComponent {
   stateOptions: any[] = [
     { label: '09:00-10:00', value: 'CODE_TIME_01',disabled:false },
     { label: '10:00-11:00', value: 'CODE_TIME_02' ,disabled:false},
-    { label: '11:00-12:00', value: 'CODE_TIME_03' ,disabled:false}
+    { label: '12:00-13:00', value: 'CODE_TIME_03' ,disabled:false},
+     { label: '13:00-14:00', value: 'CODE_TIME_04' ,disabled:false},
+     { label: '15:00-16:00', value: 'CODE_TIME_05' ,disabled:false},
+     { label: '17:00-18:00', value: 'CODE_TIME_06' ,disabled:false}
 ];
   constructor(private homeService: HomeService) {}
 
@@ -74,6 +77,11 @@ this.checkToken()
   }
   onDialogChange(event:any){
     console.log(event)
+  }
+  returnArray(data:any){
+    var formatdata = JSON.parse(data)
+    return formatdata.amenities
+
   }
   handleDialogClose(success: boolean) {
     console.log(success)
@@ -196,9 +204,11 @@ closeDialog(){
   token:boolean = false
   checkToken(){
     let temp = localStorage.getItem(localStorageKey.token)
+    let user = localStorage.getItem(localStorageKey.profile)
+    const profile = JSON.parse(user!)
     if(temp === null){
       this.token = false
-    } else{
+    } else if(profile.userType === "USER"){
       this.token = true
     }
     return localStorage.getItem(localStorageKey.token)
@@ -213,10 +223,7 @@ closeDialog(){
     }));
   }
   Search(){
-    var format = ""
-      this.selectedFilter?.forEach(element => {
-          format +=  (element)
-      });
+   console.log(this.selectedFilter)
     this.homeService.GetSpace(this.search).subscribe(response => {
       this.space = response.responseDatas
       this.totalRecords = response.total

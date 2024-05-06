@@ -10,6 +10,7 @@ import { AppService } from 'src/app/app.service';
 import { AppComponent } from 'src/app/app.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ChipsModule } from 'primeng/chips';
+import { catchError, take, throwError } from 'rxjs';
 
 
 @Component({
@@ -154,12 +155,12 @@ showDialog(id: number) {
             box = "คุณได้ยืนยันการสร้างรายการสำเร็จ"
            this.confirmUpdate(id,payload)
           }
-          this.appComponent.show('success',text, box);
+          this.appComponent.show('success',text, box,true);
 
             // this.messageService.add({ severity: 'info', summary: text, detail: box, life: 3000 });
         },
         reject: () => {
-          this.appComponent.show('info','ยกเลิก','คุณได้ยกเลิกรายการเรียบร้อย');
+          this.appComponent.show('info','ยกเลิก','คุณได้ยกเลิกรายการเรียบร้อย',true);
             // this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
         }
     });
@@ -211,5 +212,58 @@ else{
 
       }
     })
+  }
+
+  excel() {
+    let id = null
+    if(this.GetUserType() === "ADMIN"){
+      id = 0
+    }else if(this.GetUserType() === "PARTNER"){
+
+    }
+
+    this.parterService.export(`Booking/transaction/export/${id}`)
+      .pipe(
+        take(1),
+        catchError(error => {
+          console.error('An error occurred:', error);
+
+          return throwError(error);
+        })
+      )
+      .subscribe(response => {
+        const blob = response.body as Blob;
+        const contentDisposition = response.headers.get('Content-Disposition');
+        console.log("contentDisposition",contentDisposition)
+        console.log(response.headers.get('Content-Disposition'))
+        if(contentDisposition){
+        const parts = contentDisposition.split(';');
+
+        let filename = '';
+
+          parts.forEach(element => {
+            if (element.trim().startsWith('filename=')) {
+
+              filename = element.trim().substring('filename='.length).replace(/["']/g, '').trim();
+            console.log(filename)
+
+            }
+            else{
+
+            }
+          });
+
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+
+          link.download = filename;
+         console.log(link.download)
+          link.click();
+      }
+
+
+
+
+      });
   }
 }

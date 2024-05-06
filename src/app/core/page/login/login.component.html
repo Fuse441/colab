@@ -1,19 +1,82 @@
 <div class="container_login">
     <div class="content">
-        <div class="left-content">
+        <div class="left-content" *ngIf="register">
+            <h4>สมัครสมาชิก</h4>
+            <form [formGroup]="formRegister" class="grid-container">
+
+                <div class="container-input">
+                    <span class="p-float-label">
+            <input class="input-users" pInputText  formControlName="firstName" class="form-input"
+              autocomplete="off" />
+            <label for="username">ชื่อจริง</label>
+          </span>
+                </div>
+                <div class="container-input">
+                    <span class="p-float-label">
+            <input class="input-users" pInputText  formControlName="lastName" class="form-input"
+              autocomplete="off" />
+            <label for="username">นามสกุล</label>
+          </span>
+                </div>
+                <div class="container-input">
+                    <span class="p-float-label">
+            <input class="input-users" pInputText  formControlName="email" class="form-input"
+              autocomplete="off" />
+            <label for="username">อีเมล</label>
+          </span>
+                </div>
+                <div class="container-input">
+                    <span class="p-float-label">
+            <input class="input-users" pInputText  formControlName="birthDay" class="form-input"
+              autocomplete="off" />
+            <label for="username">วันเกิด yyyy-mm-dd</label>
+          </span>
+                </div>
+                <div class="container-input full-width">
+                    <span class="p-float-label">
+            <input class="full-width" pInputText formControlName="phoneNumber" class="form-input"
+              autocomplete="off" />
+            <label for="username">เบอร์โทรศัพท์</label>
+          </span>
+                </div>
+                <div class="container-input">
+                    <span class="p-float-label">
+            <input class="input-users" pInputText  formControlName="username" class="form-input"
+              autocomplete="off" />
+            <label for="username">ชื่อผู้ใช้งาน</label>
+          </span>
+                </div>
+                <div class="container-input">
+                    <span class="p-float-label">
+            <p-password styleClass="custom-input" formControlName="password" [(ngModel)]="password" [toggleMask]="true"
+              [feedback]="false" class="form-input"></p-password>
+            <label for="username">รหัสผ่าน</label>
+          </span>
+                </div>
+                <div class="full-width my-3">
+                    <p-selectButton [options]="stateOptions" formControlName="userType" optionLabel="label" optionValue="value" />
+                </div>
+            </form>
+
+            <p-button styleClass="btn-custom" (onClick)="registerUser(0)" label="สมัครสมาชิก"></p-button>
+            <a class="flex flex-row-reverse register" (click)="OpenRegister()"> เข้าสู่ระบบ?</a>
+        </div>
+        <div class="left-content" *ngIf="!register">
             <h4>เข้าสู่ระบบ</h4>
             <form [formGroup]="formGroup">
-                <div class="container-input-username">
+                <div class="container-input">
                     <span class="p-float-label">
-          <input class="input-users" pInputText id="username" formControlName="username" class="form-input" autocomplete="off" />
-          <label for="username">ชื่อผู้ใช้งาน</label>
-        </span>
+            <input  class="input-users" pInputText id="username" formControlName="username" class="form-input"
+              autocomplete="off" />
+            <label for="username">ชื่อผู้ใช้งาน</label>
+          </span>
                 </div>
-                <div class="container-input-password">
+                <div class="container-input">
                     <span class="p-float-label">
-          <p-password styleClass="custom-input"  formControlName="password" [(ngModel)]="password" [toggleMask]="true" [feedback]="false" class="form-input"></p-password>
-          <label for="username">รหัสผ่าน</label>
-        </span>
+            <p-password styleClass="custom-input" formControlName="password" [(ngModel)]="password" [toggleMask]="true"
+              [feedback]="false" class="form-input"></p-password>
+            <label for="username">รหัสผ่าน</label>
+          </span>
                 </div>
             </form>
             <div class="flex align-items-center gap-1 my-3 flex-row-reverse">
@@ -22,6 +85,7 @@
 
             </div>
             <p-button styleClass="btn-custom" (onClick)="login()" label="เข้าสู่ระบบ"></p-button>
+            <a class="flex flex-row-reverse register" (click)="OpenRegister()"> คุณยังไม่มี บัญชีใช่ไหม ?</a>
         </div>
         <div class="right-content">
             <img src="https://ctfassets.imgix.net/vh7r69kgcki3/5HEACFDhiLEOjmncs5ELEq/d447880ffb7e80f91ea8310f3cbf438c/Web_150DPI-WeWork_Alexanderplatz_Opening_Berlin__6.jpg">

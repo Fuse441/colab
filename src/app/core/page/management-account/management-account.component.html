@@ -1,39 +1,51 @@
 <div class="section-content">
     <div class="my-20 mx-5 w-full dataview">
 
-        <h1>การจัดการ Co-Working Space {{'('+ this.GetUserType() + ')'}}</h1>
-        <p-dataView #dv [value]="space">
-            <ng-template pTemplate="list" let-space>
+        <h1>การบัญชีผู้ใช้งาน {{'('+ this.GetUserType() + ')'}}</h1>
+        <p-dataView #dv [value]="users">
+            <ng-template pTemplate="list" let-user>
                 <div class="grid grid-nogutter">
                     <div class="flex flex-row-reverse my-3 mx-3">
 
-                        <p-button icon="pi pi-plus" class="text-end mx-3 my-3 flex-auto md:flex-initial white-space-nowrap" label="เพิ่มรายการ" (onClick)="showDialog(0)" />
-                        <p-button icon="pi pi-file-export" class="text-end mx-3 my-3 flex-auto md:flex-initial white-space-nowrap" label="ออกรายงาน" (onClick)="excel()" />
+                        <!-- <p-button icon="pi pi-plus" class="text-end mx-3 my-3 flex-auto md:flex-initial white-space-nowrap" label="เพิ่มรายการ" (onClick)="showDialog(0)" />
+                        <p-button icon="pi pi-file-export" class="text-end mx-3 my-3 flex-auto md:flex-initial white-space-nowrap" label="ออกรายงาน" (onClick)="showDialog(0)" /> -->
                     </div>
 
-                    <ng-container *ngIf="space != null">
+                    <!-- <ng-container *ngIf="user != null">
                         <ng-container *ngTemplateOutlet="dialog; context: { $implicit: null }"></ng-container>
-                    </ng-container>
-                    <ng-container *ngIf="space">
-                        <div class="col-12" *ngFor="let item of space; let first = first" class="col-12">
-                            <ng-container *ngTemplateOutlet="dialog; context: { $implicit: item }"></ng-container>
+                    </ng-container> -->
+                    <ng-container *ngIf="user">
+                        <div class="col-12" *ngFor="let item of users; let first = first" class="col-12">
+
                             <div class="flex flex-column sm:flex-row sm:align-items-center p-4 gap-3" [ngClass]="{ 'border-top-1 surface-border': !first }">
                                 <div class="md:w-10rem relative">
-                                    <img class="image " [src]="item.image" [alt]="item.name" />
+
 
                                 </div>
                                 <div class="">
                                     <div class="">
-                                        <div>
-                                            <h2 class="">{{ item.spaceName }}</h2>
-                                            <div class="text-lg font-medium text-900 mt-2">{{ item.name }}</div>
+                                        <div class="flex">
+                                            <h2 class="mx-2">{{ item.firstName }}</h2>
+
+                                            <h2 class="mx-2">{{ item.lastName }}</h2>
+                                            <p-tag icon="pi pi-user" class="mx-3" value="ระดับบัญชี {{ item.userType }}"></p-tag>
+                                            <ng-container *ngIf="Approve(item.active) === 'รอการยืน'">
+                                                <p-tag icon="pi pi-info-circle" severity="warning" value="{{Approve(item.active)}}"></p-tag>
+                                            </ng-container>
+                                            <ng-container *ngIf="Approve(item.active) === 'เปิดใช้งาน'">
+                                                <p-tag icon="pi pi-info-circle" severity="info" value="{{Approve(item.active)}}"></p-tag>
+                                            </ng-container>
+
+
+
                                         </div>
                                     </div>
                                     <div class="">
                                         <span class="text-xl font-semibold text-900">{{ item.spaceDescription }}</span>
                                         <div class="flex flex-row-reverse md:flex-row gap-2 my-2">
-                                            <p-button icon="pi pi-trash" [outlined]="true" (onClick)="confirm(item.spaceId,'delete')" />
-                                            <p-button icon="pi pi-pen-to-square" class="flex-auto md:flex-initial white-space-nowrap" (onClick)="showDialog(item.spaceId)" label="แก้ไขรายการ" />
+                                            <p-button icon="pi pi-trash" [outlined]="true" (onClick)="confirm(item.id,'delete')" />
+                                            <p-button icon="pi pi-pen-to-square" class="flex-auto md:flex-initial white-space-nowrap" (onClick)="showDialog(item.id)" label="แก้ไขรายการ" />
+                                            <ng-container *ngTemplateOutlet="dialog; context: { $implicit: item }"></ng-container>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +61,9 @@
 
         <ng-template #dialog let-data>
             <p-dialog header="Header" [(visible)]="visible" [modal]="true" [style]="{ width: '90rem' }">
+
                 <ng-template pTemplate="header">
+
                     <div class="inline-flex align-items-center justify-content-center gap-2">
 
                         <h3 class="font-bold white-space-nowrap">
@@ -57,63 +71,61 @@
                         </h3>
                     </div>
                 </ng-template>
-                <span class="p-text-secondary block mb-5">เพิ่ม/แก้ไข Co-Working Space ของท่าน.</span>
+                <span class="p-text-secondary block mb-5">เพิ่ม/แก้ไข บัญผู้ใช้งาน</span>
                 <form [formGroup]="formUpdate" class="form-grid">
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
-                      ชื่อสถานที่
-                  </label>
-                        <input pInputText formControlName="spaceName" class="flex-auto" autocomplete="off" />
-                    </div>
-                    <div class="form-row">
-                        <label class="font-semibold w-6rem">
-                   คำอธิบาย
+                    ไอดีผู้ใช้งาน
                 </label>
-                        <input pInputText formControlName="spaceDescription" class="flex-auto" autocomplete="off" />
+                        <input pInputText formControlName="username" class="flex-auto" autocomplete="off" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
-                 ประเภท
+                 ชื่อจริง
               </label>
-                        <input pInputText formControlName="spaceType" id="username" class="flex-auto" autocomplete="off" />
+                        <input pInputText formControlName="firstName" class="flex-auto" autocomplete="off" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
-               ราคาต่อชั่วโมง
+                          นามสกุล
             </label>
-                        <input pInputText formControlName="price" class="flex-auto" autocomplete="off" />
+                        <input pInputText formControlName="lastName" id="username" class="flex-auto" autocomplete="off" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
-             สถานที่
+             อีเมล
           </label>
-                        <input pInputText formControlName="location" class="flex-auto" autocomplete="off" />
+                        <input pInputText formControlName="email" class="flex-auto" autocomplete="off" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
-           สิ่งอำนวยความสะดวก
+           วันเกิด
         </label>
-                        <input pInputText formControlName="amenities" class="flex-auto" autocomplete="off" />
+                        <input pInputText formControlName="birthDay" class="flex-auto" autocomplete="off" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
-         จำนวนพื้นที่ต่อ
+         เบอร์โทรศัพท์
       </label>
-                        <input pInputText formControlName="capacity" class="flex-auto" autocomplete="off" />
+                        <input pInputText formControlName="phoneNumber" class="flex-auto" autocomplete="off" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
-       รูปภาพ
+       สถานะ
     </label>
-                        <input pInputText formControlName="image" class="flex-auto" autocomplete="off" />
+                        <p-selectButton [options]="stateOptions" formControlName="active" optionLabel="label" optionValue="value" />
                     </div>
+
                 </form>
+
                 <ng-template pTemplate="footer">
                     <p-button label="Cancel" [text]="true" severity="secondary" (click)="visible = false" />
-                    <p-button *ngIf="!create" label="อัพเดตรายการ" [outlined]="true" severity="secondary" (click)="update(data.spaceId)" />
+                    <p-button *ngIf="!create" label="อัพเดตรายการ" [outlined]="true" severity="secondary" (click)="update(userId!)" />
                     <p-button *ngIf="create" label="เพิ่มรายการ" [outlined]="true" severity="secondary" (click)="update(0)" />
                 </ng-template>
+
             </p-dialog>
+
         </ng-template>
 
         <p-confirmDialog>
