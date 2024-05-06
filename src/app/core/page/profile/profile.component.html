@@ -1,31 +1,25 @@
-profile.component.html
 <div class="container_profile">
-    <!-- <div class="profile">
-        <div class="left">
+    <form [formGroup]="formUpdate">
+        <div class="profile">
 
-            <h3>ข้อมูลส่วนบุคคล</h3>
-            <p><strong>Username:</strong> jiranon</p>
-            <p><strong>First Name:</strong> จิรานนท์</p>
-            <p><strong>Last Name:</strong> เข็มกลัด</p>
-        </div>
-        <div class="right">
+            <div class="left">
+                <h3>ข้อมูลส่วนบุคคล</h3>
+                <p class="col-span-2"><strong>Username: </strong> <input pInputText class="flex-auto" formControlName="username" autocomplete="off" /></p>
 
-            <h3>รายละเอียดการติดต่อ</h3>
-            <p><strong>Email:</strong> jiranon.khemklad@gmail.com</p>
-            <p><strong>Birthday:</strong> 27/11/2001</p>
-            <p><strong>Phone Number:</strong> 0645098990</p>
-        </div>
-        <p-button styleClass="btn-custom" label="แก้ไข"></p-button>
-    </div> -->
-    <!-- app.component.html -->
-    <div class="container mt-4">
-        <h2>ข้อเสนอแนะ</h2>
-        <form>
-            <div class="form-group">
-                <textarea id="feedback" rows="5" class="form-control"></textarea>
+                <p><strong>First Name: </strong> <input pInputText class="flex-auto" formControlName="firstName" autocomplete="off" /></p>
+                <p><strong>Last Name: </strong> <input pInputText class="flex-auto" formControlName="lastName" autocomplete="off" /></p>
+
             </div>
-            <p-button styleClass="btn-custom" label="ส่ง"></p-button>
-        </form>
-    </div>
+            <div class="right">
+                <h3>รายละเอียดการติดต่อ</h3>
+                <p><strong>Email: </strong> <input pInputText class="flex-auto" formControlName="email" autocomplete="off" /></p>
+                <p><strong>Birthday: </strong> <input pInputText class="flex-auto" autocomplete="off" formControlName="birthDay" /></p>
+                <p><strong>Phoenumber: </strong> <input pInputText class="flex-auto" autocomplete="off" formControlName="phoneNumber" /></p>
+                <p-button icon="pi pi-pen-to-square" class="float-end flex-auto md:flex-initial white-space-nowrap text-end" label="แก้ไขรายการ" (onClick)="Update()" />
+            </div>
+
+        </div>
+    </form>
+
 
 </div>

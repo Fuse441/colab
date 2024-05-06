@@ -10,8 +10,14 @@ export class HomeService extends ApiService {
     super(http)
    }
 
-   GetSpace(){
-    return  this.get("space")
+   GetSpace(search?:string){
+    if(search){
+      return  this.get(`Space?search=${search}`)
+    }
+    else{
+      return  this.get(`Space`)
+    }
+
    }
    GetBookingId(id:number){
     return this.get(`Booking/${id}`)

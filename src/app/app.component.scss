@@ -1,49 +1,99 @@
-.navbar{
-  position: fixed;
-width: 100%;
-z-index: 9999;
-background: #f8f9fa;
+.navbar {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    background: #f8f9fa;
 }
 
+::ng-deep .custom .p-toast {
+    margin-top: 90px;
+}
 
 .footer {
-  
- 
-  padding: 30px 30px 20px 30px;
-  color: #2f2f2f;
-  background-color: #fff;
-  border-top: 1px solid #e5e5e5;
+    padding: 30px 30px 20px 30px;
+    color: #2f2f2f;
+    background-color: #fff;
+    border-top: 1px solid #e5e5e5;
 }
+
+.loading-overlay {
+    position: fixed;
+    /* ให้อยู่คงที่ไม่เคลื่อนที่ตามการเลื่อนหน้า */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* ครอบคลุมทั้งหน้าจอ */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* พื้นหลังสีเทาโปร่งแสง */
+    display: flex;
+    justify-content: center;
+    /* จัดวางแกนหลัก (แนวนอน) ให้อยู่ตรงกลาง */
+    align-items: center;
+    /* จัดวางแกนรอง (แนวตั้ง) ให้อยู่ตรงกลาง */
+    z-index: 9999;
+    /* ให้อยู่เหนือส่วนอื่นๆ */
+}
+
+.loading-spinner {
+    width: 50px;
+    /* กำหนดขนาดของ spinner */
+    height: 50px;
+    border: 5px solid #ddd;
+    /* สร้างขอบ spinner สีเทาอ่อน */
+    border-top-color: #3498db;
+    /* สีของ spinner ที่หมุน */
+    border-radius: 50%;
+    /* ทำให้เป็นวงกลม */
+    animation: spin 1s linear infinite;
+    /* ใช้ keyframes ที่ชื่อ spin */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+        /* เริ่มต้นที่ 0 องศา */
+    }
+    100% {
+        transform: rotate(360deg);
+        /* หมุนรอบตัวเอง 360 องศา */
+    }
+}
+
 .column {
-  float: left;
-  width: 50%;
-  padding: 10px;
- 
+    float: left;
+    width: 50%;
+    padding: 10px;
 }
+
 
 /* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-.contact .body{
-  display: flex;
 
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
-.contact .body a,.text-at-icon {
-  display: flex;
-  align-items: center;
-  text-decoration-line: none;
-  
+
+.contact .body {
+    display: flex;
 }
-.contact .body i{
-  margin: 10px;
-  background-color: #2f2f2f;
-  color:#fff;
-  padding: 10px;
-  border-radius: 50%;
+
+.contact .body a,
+.text-at-icon {
+    display: flex;
+    align-items: center;
+    text-decoration-line: none;
 }
-.social i{
-  padding: 15px;
+
+.contact .body i {
+    margin: 10px;
+    background-color: #2f2f2f;
+    color: #fff;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.social i {
+    padding: 15px;
 }

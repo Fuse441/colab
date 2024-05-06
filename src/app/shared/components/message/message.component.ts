@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MessageUserService } from './message.service';
 import { localStorageKey } from '@config/localStorageKey';
 import { take } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-message',
@@ -13,21 +14,40 @@ export class MessageComponent {
   chat: boolean = false;
   msg :any[] = []
   cancelBooking: boolean = false;
-  constructor(private messageService: MessageUserService){
+  confirmCancel:boolean = false
+  constructor(private messageServices: MessageUserService){
 
+  }
+
+
+
+  cancel(){
+    const userProfileString = localStorage.getItem(localStorageKey.profile)
+    const profile = JSON.parse(userProfileString!)
+    this.messageServices.cancelBooking(profile.id).subscribe(response =>{
+      if(response.responseCode === 200){
+        this.confirmCancel = false
+        this.chat === false
+        // this.showMessage("success","ยกเลิกรายการจองสำเร็จ","เช็คที่อีเมลและกล่องข้อความเพื่อตรวจสอบรายละเอียด")
+      }
+    })
+  }
+  toggleCancel(){
+    this.confirmCancel = !this.confirmCancel
+    return this.confirmCancel
   }
   toggleChat() {
 
     if(this.chat === false){
       const userProfileString = localStorage.getItem(localStorageKey.profile)
       const profile = JSON.parse(userProfileString!)
-      this.messageService.renderChat(profile.id).subscribe(response =>{
+      this.messageServices.renderChat(profile.id).subscribe(response =>{
         this.msg = JSON.parse(response.responseDatas.details)
 
 
       })
 
-      this.messageService.checkStatus(profile.id).subscribe(response =>{
+      this.messageServices.checkStatus(profile.id).subscribe(response =>{
         if(response.responseDatas === null){
           this.cancelBooking = false
         }

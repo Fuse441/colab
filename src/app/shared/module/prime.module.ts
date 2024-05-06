@@ -20,7 +20,13 @@ import { StepperModule } from 'primeng/stepper';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { DataViewModule } from 'primeng/dataview';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { RatingModule } from 'primeng/rating';
 const modules = [
+  RatingModule,
+  ConfirmDialogModule,
+  DataViewModule,
   SelectButtonModule,
   RippleModule,
   ToastModule,

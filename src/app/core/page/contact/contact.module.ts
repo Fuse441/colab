@@ -17,6 +17,7 @@ import { ContactRoutingModule } from './contact-routing.module';
     ContactRoutingModule,
     ReactiveFormsModule,
     PrimeModule,
+    FormsModule,
     MaterialModule
   ]
 })

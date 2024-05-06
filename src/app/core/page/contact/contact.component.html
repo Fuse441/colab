@@ -4,46 +4,46 @@
         <p>ประเภทของความช่วยเหลือ: ขอความช่วยเหลือเกี่ยวกับการใช้งานแอปพลิเคชัน รายละเอียดเพิ่มเติม: ฉันพยายามทำการสมัครสมาชิกในแอปพลิเคชันของคุณ แต่พบปัญหาในขั้นตอนการชำระเงิน ไม่สามารถดำเนินการต่อไปได้ ฉันต้องการความช่วยเหลือในการแก้ไขปัญหานี้โดยด่วน ข้อมูลการติดต่อ:
             โปรดติดต่อกลับทางอีเมลที่ colab&#64;example.com ระยะเวลาที่คาดว่าจะได้รับการตอบกลับ: ภายใน 24 ชั่วโมง</p>
 
-        <form class="flex flex-wrap formControl">
+        <form class="flex flex-wrap formControl" [formGroup]="formContact">
 
             <div class="mx-2 my-3 username">
                 <span class="p-float-label">
-              <input  class="p-inputtext-sm w-full" pInputText id="username" />
+              <input  class="p-inputtext-sm w-full" pInputText formControlName="firstName" />
                <label for="username">ชื่อ</label>
                </span>
             </div>
             <div class="mx-2 my-3 password">
                 <span class="p-float-label">
-              <input  class="p-inputtext-sm w-full" pInputText id="username" />
+              <input  class="p-inputtext-sm w-full" pInputText formControlName="lastName" />
                <label for="username">นามสกุล</label>
                </span>
             </div>
             <div class="mx-2 my-3 w-full">
                 <span class="p-float-label">
-            <input  class="p-inputtext-sm w-full" pInputText id="username" />
+            <input  class="p-inputtext-sm w-full" pInputText formControlName="email" />
              <label for="username">อีเมล</label>
              </span>
             </div>
             <div class="mx-2 mx-2 my-3 w-full">
 
                 <span class="p-float-label">
-                <textarea id="float-input" rows="5" cols="52" pInputTextarea></textarea>
+                <textarea id="float-input" rows="5" cols="52" pInputTextarea formControlName="msg"></textarea>
                 <label for="float-input">ข้อความ</label>
            </span>
             </div>
             <div class="mx-2 mx-2 my-3 w-full verify">
                 <span class="p-float-label ">
-                  <input  class="p-inputtext-sm w-full" pInputText id="username" />
+                  <input  class="p-inputtext-sm w-full" pInputText formControlName="code" />
               <label for="float-input">กรอกรหัสป้องกัน</label>
          </span>
             </div>
             <div class="mx-2 mx-2 my-3 w-full code">
                 <span class="p-float-label">
                 <input  class="p-inputtext-sm w-full" pInputText id="username" disabled/>
-            <label for="float-input">Uqx</label>
+            <label for="float-input">{{Code}}</label>
        </span>
             </div>
-            <p-button label="ส่ง" class="mx-2 mx-2 my-3 w-full btn"></p-button>
+            <p-button label="ส่ง" class="mx-2 mx-2 my-3 w-full btn" [disabled]="this.formContact.get('code')?.value != Code" (onClick)="Send()"></p-button>
         </form>
 
     </div>

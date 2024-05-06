@@ -16,4 +16,7 @@ export class MessageUserService extends ApiService {
   checkStatus(id:number){
     return this.get(`Booking/CheckStatus/${id}`)
   }
+  cancelBooking(id:number){
+    return this.post(`Booking/UpdateStatus/${id}`,null)
+  }
 }

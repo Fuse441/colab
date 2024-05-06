@@ -1,3 +1,6 @@
+<div *ngIf="loading" class="loading-overlay">
+    <div class="loading-spinner"></div>
+</div>
 <div class="navbar">
     <p-menubar [model]="items">
         <ng-template pTemplate="start">
@@ -15,6 +18,7 @@
 <ng-container>
     <router-outlet></router-outlet>
 </ng-container>
+<p-toast class="custom" />
 
 <div class="footer">
     <div class="row">

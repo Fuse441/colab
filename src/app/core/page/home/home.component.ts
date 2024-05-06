@@ -47,6 +47,8 @@ export class HomeComponent {
     endTime: new FormControl<any | null>(null)
   });
 
+
+
   stateOptions: any[] = [
     { label: '09:00-10:00', value: 'CODE_TIME_01',disabled:false },
     { label: '10:00-11:00', value: 'CODE_TIME_02' ,disabled:false},
@@ -62,6 +64,7 @@ export class HomeComponent {
     this.homeService.GetSpace().subscribe((reponse => {
       this.space = reponse.responseDatas
       this.totalRecords = reponse.total
+
 this.checkToken()
       console.log(this.space)
     }));
@@ -203,9 +206,21 @@ closeDialog(){
 
   clearCheckboxes() {
     this.selectedFilter = []
+    this.search = ""
+    this.homeService.GetSpace().subscribe((reponse => {
+      this.space = reponse.responseDatas
+      this.totalRecords = reponse.total
+    }));
   }
   Search(){
-    console.log(this.selectedFilter,this.startPrice,this.lastPrice)
+    var format = ""
+      this.selectedFilter?.forEach(element => {
+          format +=  (element)
+      });
+    this.homeService.GetSpace(this.search).subscribe(response => {
+      this.space = response.responseDatas
+      this.totalRecords = response.total
+    })
 
   }
 }

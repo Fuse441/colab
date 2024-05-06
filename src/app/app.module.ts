@@ -11,6 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { SignOutComponent } from './core/page/sign-out/sign-out.component';
 import { MessageModule } from '@components/message/message.module';
+import { MessageService } from 'primeng/api/messageservice';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { MessageModule } from '@components/message/message.module';
     PrimeModule,
     ReactiveFormsModule,
     FormsModule,
-    MessageModule
+    MessageModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

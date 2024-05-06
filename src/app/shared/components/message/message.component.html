@@ -10,7 +10,16 @@
 
             </p>
             <div class=" text-end">
-                <p-button *ngIf="cancelBooking" styleClass="mx-5 my-3 text-end btn-canncel" (onClick)="toggleChat()" label="ยกเลิกรายการ"></p-button>
+                <p-button *ngIf="cancelBooking" styleClass="mx-5 my-3 text-end btn-canncel" (onClick)="toggleCancel()" label="ยกเลิกรายการ"></p-button>
+                <p-dialog header="ยืนยัน" [(visible)]="confirmCancel" [modal]="true" [draggable]="false" [resizable]="false">
+                    <p>
+                        คุณแน่ใจแล้วใช่ไหมที่ต้องการยกเลิกการจองนี้
+
+                    </p>
+
+                    <p-button class="mx-3" label="ยืนยัน" icon="pi pi-wallet" iconPos="right" (onClick)="cancel()"></p-button>
+                    <p-button label="ยกเลิก" class="" icon="pi pi-times " iconPos="right" (onClick)="toggleCancel()"></p-button>
+                </p-dialog>
             </div>
 
 

@@ -25,6 +25,12 @@ export const navigationRoutes: Routes = [
 
     loadChildren: () => import(`../../core/page/sign-out/sign-out.module`).then(m => m.SignOutModule),
   },
+
+  {
+    path: 'management',
+    canActivate: [AuthenGuard],
+    loadChildren: () => import(`../../core/page/partner/partner.module`).then(m => m.PartnerModule),
+  },
   {
     path: '**',
     redirectTo: '/home',
