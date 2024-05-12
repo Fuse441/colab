@@ -2,7 +2,9 @@
     <div class="my-20 mx-5 w-full dataview">
 
         <h1>การจัดการ Co-Working Space {{'('+ this.GetUserType() + ')'}}</h1>
+        <p-chart type="bar" [data]="basicData" [options]="basicOptions" class="chart" />
         <p-dataView #dv [value]="space">
+
             <ng-template pTemplate="list" let-space>
                 <div class="grid grid-nogutter">
                     <div class="flex flex-row-reverse my-3 mx-3">
@@ -81,7 +83,7 @@
                         <label class="font-semibold w-6rem">
                ราคาต่อชั่วโมง
             </label>
-                        <input pInputText formControlName="price" class="flex-auto" autocomplete="off" />
+                        <p-inputNumber formControlName="price" number class="flex-auto" autocomplete="off" class="input-custom" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">
@@ -99,7 +101,7 @@
                         <label class="font-semibold w-6rem">
          จำนวนพื้นที่ต่อ
       </label>
-                        <input pInputText formControlName="capacity" class="flex-auto" autocomplete="off" />
+                        <p-inputNumber formControlName="capacity" class="flex-auto" autocomplete="off" class="input-custom" />
                     </div>
                     <div class="form-row">
                         <label class="font-semibold w-6rem">

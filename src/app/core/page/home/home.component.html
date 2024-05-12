@@ -79,7 +79,7 @@
     </div>
 </div>
 <div class="section-content">
-    <div class="space flex">
+    <div class="space flex flex-wrap">
         <ng-container *ngFor="let item of space">
 
 
@@ -136,7 +136,7 @@
                                 <h4>เลือกวันและเวลาการเข้าใช้งาน</h4>
 
                                 <form [formGroup]="formSelectBooking" class="my-3">
-                                    <p-calendar class="" placeholder="วัน/เดือน/ปี" formControlName="date" (ngModelChange)="onDateChange($event)"></p-calendar>
+                                    <p-calendar class="" placeholder="วัน/เดือน/ปี" formControlName="date" (ngModelChange)="onDateChange($event)" [minDate]="minSelectableDate"></p-calendar>
                                     <p-selectButton [options]="stateOptions" formControlName="startTime" optionLabel="label" optionValue="value" />
                                 </form>
 

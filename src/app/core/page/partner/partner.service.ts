@@ -19,6 +19,10 @@ export class PartnerService extends ApiService {
   deleteSpace(id:number){
     return this.delete(`Space/${id}`)
   }
+  getChart(id:number){
+    return this.get(`Booking/chart/${id}`)
+  }
+
  Update = (id:number, payload:{spaceName:string , spaceDescription:string,spaceType:string,spaceDetails:string,partnerId:number,image:string}) => this.post(`Space/${id}`,payload)
  Create = (id:number, payload:{spaceName:string , spaceDescription:string,spaceType:string,spaceDetails:string,partnerId:number,image:string}) => this.post(`Space/${id}`,payload)
   }

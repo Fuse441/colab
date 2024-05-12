@@ -25,7 +25,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { RatingModule } from 'primeng/rating';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { TagModule } from 'primeng/tag';
+import { ChartModule } from 'primeng/chart';
 const modules = [
+  ChartModule,
   TagModule,
   AutoFocusModule,
   RatingModule,

@@ -58,7 +58,7 @@ export class HomeComponent {
      { label: '17:00-18:00', value: 'CODE_TIME_06' ,disabled:false}
 ];
   constructor(private homeService: HomeService) {}
-
+  minSelectableDate = new Date()
 
   ngOnInit() {
     this.images = this.homeService.getImages()

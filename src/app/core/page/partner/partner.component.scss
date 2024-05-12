@@ -36,3 +36,12 @@
     display: flex;
     flex-direction: column;
 }
+
+::ng-deep .input-custom span {
+    width: 100%;
+}
+
+::ng-deep .chart div {
+    width: 500px;
+    height: 260px;
+}

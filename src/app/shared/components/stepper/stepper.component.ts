@@ -24,6 +24,7 @@ export class StepperComponent{
   btnLoading = false;
   visible:boolean = false;
   bookingStatus:boolean = false
+  currentDate: Date = this.getCurrentDate();
   @Output() closeDialog: EventEmitter<any> = new EventEmitter();
   constructor(private messageService: MessageService,private homeService:HomeService){
 
@@ -33,7 +34,9 @@ export class StepperComponent{
 
   }
 
-
+  getCurrentDate(): Date {
+    return new Date(); // วันที่ปัจจุบัน
+  }
   showMessage(format:string,msg:string,details:string) {
     this.messageService.add({ severity: format, summary: msg, detail: details,life:4000});
 }

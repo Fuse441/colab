@@ -25,7 +25,9 @@ import { catchError, take, throwError } from 'rxjs';
 export class PartnerComponent {
   space:any[] = []
   visible: boolean = false;
+  basicData: any;
 
+  basicOptions: any;
   formUpdate!: FormGroup
   constructor(private readonly router: Router,private parterService:PartnerService,private confirmationService: ConfirmationService,private appComponent:AppComponent){
 
@@ -61,6 +63,69 @@ export class PartnerComponent {
       status: new FormControl<boolean | null>(null),
       image: new FormControl<string | null>(null)
     });
+
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+    this.parterService.getChart(this.GetUserId()).subscribe(response => {
+      let label:string[] = []
+      let datas:number[] = []
+      response.forEach((element:any) => {
+        label.push(element.spaceName)
+        datas.push(element.count)
+      });
+
+      this.basicData = {
+        labels: label,
+        datasets: [
+            {
+                label: 'ยอดการจอง',
+                data: datas,
+                backgroundColor: ['rgba(255, 159, 64, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(153, 102, 255, 0.2)'],
+                borderColor: ['rgb(255, 159, 64)', 'rgb(75, 192, 192)', 'rgb(54, 162, 235)', 'rgb(153, 102, 255)'],
+                borderWidth: 1
+            }
+        ]
+    };
+
+
+    })
+
+
+
+        this.basicOptions = {
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColor
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder,
+                        drawBorder: false
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: textColorSecondary
+                    },
+                    grid: {
+                        color: surfaceBorder,
+                        drawBorder: false
+                    }
+                }
+            }
+        };
+
 }
 
 update(id: number) {
@@ -219,7 +284,7 @@ else{
     if(this.GetUserType() === "ADMIN"){
       id = 0
     }else if(this.GetUserType() === "PARTNER"){
-
+        id = this.GetUserId()
     }
 
     this.parterService.export(`Booking/transaction/export/${id}`)
